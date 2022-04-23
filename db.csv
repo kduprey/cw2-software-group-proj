@@ -1,63 +1,63 @@
-Level,Context,Sub-Context,Grammar/Structure,Key Vocab,Link
-A1,Ordering food and drink,Takeaway,"Present simple, do you have?","reservation, wait, about, takaway",jump to text
-A1,Exchanging personal information,Social Media,adjectives,"use, snapchat",jump to text
-A1,Going shopping and asking for prices,Payment,present perfect,"cash, card, insert, touch, hasn't worked, PIN",jump to text
-A1,Making Appointments,Booking,negative,"appointment, to book, available",jump to text
-A1,Introductions,Repeat name,negative,repeat,jump to text
-A1,Basic employment issues,Cover,,"manager, to call back, to take a message, i've got a cold, find cover, send a message in the group chat, shift",jump to text
-A1,Going shopping and asking for prices,Refund,,"refund, items, unfortunately, to use, exchange, gift voucher, manager",jump to text
-A2,Asking and giving directions,Delivery Driver,present continuous,"delivery driver, having trouble, tricky, gates, statue, recommend, lift, stone, round",jump to text
-A2,Ordering food and drink,Vegan pizza,"past perfect, past simple","wrong order, vegan, mix up, that is not good enough, waiting over, accept our sincere apologies, hurry up, starving, kitchen",jump to text
-A1,Socialising in the country,Interview arrangements,,"secured a job inteview, admin role, dress code, smart-casual, face-to-face, online, only 3 stops on the no.32 bus, let you know",jump to text
-A2,Making Appointments,Dentist,comparative,"put you down, done my teeth, trust, sooner, cancellation, appointment",jump to text
-A1,Ordering food and drink,Coffee Order,questions,"decafe latte, iced, sugar-free syrup, caramel, vanilla, hazelnut, oat milk, is that to have here or to go?",jump to text
-A1,Making Appointments,Spelling your name,,we are booked,jump to text
-A1,Basic employment issues,Inteview,present simple,"interview, right, turn left",jump to text
-A1,Ordering food and drink,Water for table,,,jump to text
-A2,Ordering food and drink,Reservation,"past simple, ","reservation, delay, intended, on the house",jump to text
-A2,Going shopping and asking for prices,Payment,present perfect,"cash, card, insert, touch, hasn't worked, ",jump to text
-B1,Going shopping and asking for prices,Payment,passive voice,"cash, card",jump to text
-A1,Ordering food and drink,Reservation,,"reservation, wait, about",jump to text
-A1,Asking and giving directions,Delivery Driver,,"Delivery driver, having trouble",jump to text
-A2,Health matters,Sick relative,,,jump to text
-A2,Making invitations,Charity,present + infinitive,"charitable organisation, don't give to charity, choose, sign up, leave me alone",jump to text
-A2,Making invitations,Lunch,,"to go for lunch, I'm afraid not, days do you have off, free, that's a shame",jump to text
-B2,Going shopping and asking for prices,Phone purchase,,"launch, models, slot",jump to text
-A2,Ordering food and drink,Delayed drinks order,,mix up,jump to text
-A1,Exchanging personal information,Instagram,,"head off, give out, I suppose, username",jump to text
-A2,Socialising in the country,Family size,,"half-sister, only child, noisy",jump to text
-A2,Ordering food and drink,QR Code,,"almond, oat, soya, peppermint, subscription, scan",jump to text
-A2,Making Appointments,Doctor,I would like,"earache, flujab",jump to text
-B1,University life,Study plans,,"assignments, due, distracted, structure, maintain",jump to text
-A2,Making travel arrangements,Expired Ticket,,"valid, misunderstood, outstanding",jump to text
-B1,Making travel arrangements,E.ticket,,"QR code, rail card",jump to text
-A2,Exchaning personal information,Age restricted,,age restricted,jump to text
-A1,Exchaning personal information,neighbour's parcel,,"parcel, neighbour, corridor, signing",jump to text
-A2,Introductions,Ist day in job,,exhausting but rewarding,jump to text
-A2,Introductions,Job offer,present continuous,"following, position, paperwork",jump to text
-A2,Asking and giving directions,Hospital Visit,,"patient, admitted, ward",jump to text
-B1,Going shopping and asking for prices,Cancel hair appointment, ,"notice, cancellation charge, walk-ins, last minute",jump to text
-A2,Ordering food and drink,Cocktails,,"a tab, 2 for 1 offer, valid",jump to text
-A1,Ordering food and drink,Cocktails by card payment,,"free refills, soft drinks",jump to text
-A1,Making invitations,Disneyland,,lucky,jump to text
-A1,Making invitations,Help with child's birthday party,,setting up,jump to text
-A1,Exchaning personal information,Description of town,,"close to the beach, ancient, festivals",jump to text
-B1,Going shopping and asking for prices,Purchase of computer,"past perfect, subsitution","in stock, similar, recommend, memory, processor, discount",jump to text
-A1,University life,Study in cafe,,"assignments, next door",jump to text
-B1,Socialising,Hair cut,,blowdry,jump to text
-B1,Weather,Rain in station,,"flooded, replacement bus, soaked",jump to text
-A1,Cross-cultural experiences,International Food,,"spices, boil, text",jump to text
-A2,Socialising,Succulent,much,"succulent, tropical, sunlight, link",jump to text
-A2,Making invitations,Children at wedding,gerund,"wedding, RSVP",jump to text
-A2,Making invitations,Wedding RSVP,,"catering, schedule, vegetarian",jump to text
-A2,Cross-cultural experiences,Omelette,,"omelette, takeaway box, recycleable",jump to text
-B2,Work life,Meet for drinks,,"no kidding, workload, manageable, decent",jump to text
-A2,Ordering food and drink,Cocktails,,happy hour,jump to text
-B1,Ordering food and drink,Ordering cocktails by barcode,"present continuous, past perfect, adverbs","scan the barcode, system ensures, assure, policy",jump to text
-B2,Making travel arrangements,Disneyland,future tense,"airbnb, accomodation, tricky, resort",jump to text
-B1,Making invitations,Offering help for Pink Unicorn Party,modals,"pink, unicorn, theme",jump to text
-A2,Health,Visiting patient,,making his rounds,jump to text
-B1,Work life,Job offer,conditional,"notice, reception, dress code, uniform, insurance card, attire",jump to text
-B1,Housing conditions,Delivery of packages,"passive voice, emphatic, ",,jump to text
-A2,Weather and weather conditions,Clothing for weather,"present simple, modals","just in time, scarf",jump to text
-B2,Socialising in the country,No show date,"past perfect, past simple","a date, ghosted, keen, such a shame, there's plenty more fish in the sea",jump to text
+Level,Context,Sub-Context,Grammar/Structure,Key Vocab,Link,id
+A1,Ordering food and drink,Takeaway,"Present simple, do you have?","reservation, wait, about, takaway",jump to text,
+A1,Exchanging personal information,Social Media,adjectives,"use, snapchat",jump to text,
+A1,Going shopping and asking for prices,Payment,present perfect,"cash, card, insert, touch, hasn't worked, PIN",jump to text,
+A1,Making Appointments,Booking,negative,"appointment, to book, available",jump to text,
+A1,Introductions,Repeat name,negative,repeat,jump to text,
+A1,Basic employment issues,Cover,,"manager, to call back, to take a message, i've got a cold, find cover, send a message in the group chat, shift",jump to text,
+A1,Going shopping and asking for prices,Refund,,"refund, items, unfortunately, to use, exchange, gift voucher, manager",jump to text,
+A2,Asking and giving directions,Delivery Driver,present continuous,"delivery driver, having trouble, tricky, gates, statue, recommend, lift, stone, round",jump to text,
+A2,Ordering food and drink,Vegan pizza,"past perfect, past simple","wrong order, vegan, mix up, that is not good enough, waiting over, accept our sincere apologies, hurry up, starving, kitchen",jump to text,
+A1,Socialising in the country,Interview arrangements,,"secured a job inteview, admin role, dress code, smart-casual, face-to-face, online, only 3 stops on the no.32 bus, let you know",jump to text,
+A2,Making Appointments,Dentist,comparative,"put you down, done my teeth, trust, sooner, cancellation, appointment",jump to text,
+A1,Ordering food and drink,Coffee Order,questions,"decafe latte, iced, sugar-free syrup, caramel, vanilla, hazelnut, oat milk, is that to have here or to go?",jump to text,
+A1,Making Appointments,Spelling your name,,we are booked,jump to text,
+A1,Basic employment issues,Inteview,present simple,"interview, right, turn left",jump to text,
+A1,Ordering food and drink,Water for table,,,jump to text,
+A2,Ordering food and drink,Reservation,"past simple, ","reservation, delay, intended, on the house",jump to text,
+A2,Going shopping and asking for prices,Payment,present perfect,"cash, card, insert, touch, hasn't worked, ",jump to text,
+B1,Going shopping and asking for prices,Payment,passive voice,"cash, card",jump to text,
+A1,Ordering food and drink,Reservation,,"reservation, wait, about",jump to text,
+A1,Asking and giving directions,Delivery Driver,,"Delivery driver, having trouble",jump to text,
+A2,Health matters,Sick relative,,,jump to text,
+A2,Making invitations,Charity,present + infinitive,"charitable organisation, don't give to charity, choose, sign up, leave me alone",jump to text,
+A2,Making invitations,Lunch,,"to go for lunch, I'm afraid not, days do you have off, free, that's a shame",jump to text,
+B2,Going shopping and asking for prices,Phone purchase,,"launch, models, slot",jump to text,
+A2,Ordering food and drink,Delayed drinks order,,mix up,jump to text,
+A1,Exchanging personal information,Instagram,,"head off, give out, I suppose, username",jump to text,
+A2,Socialising in the country,Family size,,"half-sister, only child, noisy",jump to text,
+A2,Ordering food and drink,QR Code,,"almond, oat, soya, peppermint, subscription, scan",jump to text,
+A2,Making Appointments,Doctor,I would like,"earache, flujab",jump to text,
+B1,University life,Study plans,,"assignments, due, distracted, structure, maintain",jump to text,
+A2,Making travel arrangements,Expired Ticket,,"valid, misunderstood, outstanding",jump to text,
+B1,Making travel arrangements,E.ticket,,"QR code, rail card",jump to text,
+A2,Exchaning personal information,Age restricted,,age restricted,jump to text,
+A1,Exchaning personal information,neighbour's parcel,,"parcel, neighbour, corridor, signing",jump to text,
+A2,Introductions,Ist day in job,,exhausting but rewarding,jump to text,
+A2,Introductions,Job offer,present continuous,"following, position, paperwork",jump to text,
+A2,Asking and giving directions,Hospital Visit,,"patient, admitted, ward",jump to text,
+B1,Going shopping and asking for prices,Cancel hair appointment, ,"notice, cancellation charge, walk-ins, last minute",jump to text,
+A2,Ordering food and drink,Cocktails,,"a tab, 2 for 1 offer, valid",jump to text,
+A1,Ordering food and drink,Cocktails by card payment,,"free refills, soft drinks",jump to text,
+A1,Making invitations,Disneyland,,lucky,jump to text,
+A1,Making invitations,Help with child's birthday party,,setting up,jump to text,
+A1,Exchaning personal information,Description of town,,"close to the beach, ancient, festivals",jump to text,
+B1,Going shopping and asking for prices,Purchase of computer,"past perfect, subsitution","in stock, similar, recommend, memory, processor, discount",jump to text,
+A1,University life,Study in cafe,,"assignments, next door",jump to text,
+B1,Socialising,Hair cut,,blowdry,jump to text,
+B1,Weather,Rain in station,,"flooded, replacement bus, soaked",jump to text,
+A1,Cross-cultural experiences,International Food,,"spices, boil, text",jump to text,
+A2,Socialising,Succulent,much,"succulent, tropical, sunlight, link",jump to text,
+A2,Making invitations,Children at wedding,gerund,"wedding, RSVP",jump to text,
+A2,Making invitations,Wedding RSVP,,"catering, schedule, vegetarian",jump to text,
+A2,Cross-cultural experiences,Omelette,,"omelette, takeaway box, recycleable",jump to text,
+B2,Work life,Meet for drinks,,"no kidding, workload, manageable, decent",jump to text,
+A2,Ordering food and drink,Cocktails,,happy hour,jump to text,
+B1,Ordering food and drink,Ordering cocktails by barcode,"present continuous, past perfect, adverbs","scan the barcode, system ensures, assure, policy",jump to text,
+B2,Making travel arrangements,Disneyland,future tense,"airbnb, accomodation, tricky, resort",jump to text,
+B1,Making invitations,Offering help for Pink Unicorn Party,modals,"pink, unicorn, theme",jump to text,
+A2,Health,Visiting patient,,making his rounds,jump to text,
+B1,Work life,Job offer,conditional,"notice, reception, dress code, uniform, insurance card, attire",jump to text,
+B1,Housing conditions,Delivery of packages,"passive voice, emphatic, ",,jump to text,
+A2,Weather and weather conditions,Clothing for weather,"present simple, modals","just in time, scarf",jump to text,
+B2,Socialising in the country,No show date,"past perfect, past simple","a date, ghosted, keen, such a shame, there's plenty more fish in the sea",jump to text,
