@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package softtechapplication;
+package src.softtechapplication;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -16,11 +16,11 @@ import java.sql.Statement;
 public class CreateTable {
     
     public static void main(String[] args) {
-        Connection con = ConnectToDB.getConnection();
+        Connection con = softtechapplication.ConnectToDB.getConnection();
         Statement stmt = null;
         String createString;
         
-        createString = "CREATE TABLE if not exists userStudent (\n" 
+        createString = "CREATE TABLE if not exists userStudent (\n"
                 + "            userID     INT      PRIMARY KEY,\n"
                 + "            username     VARCHAR (30) ,\n"
                 + "            password  VARCHAR (30),\n"
@@ -53,9 +53,8 @@ public class CreateTable {
                 + "            studentPerformance     VARCHAR (30) ,\n"
                 + "            topics     VARCHAR (30) ,\n"
                 + "            studentID  INT  ,\n"
-                + "            teacherID  INT \n" + ") ;"
-                + "                    CONSTRAINT fk_studentID"
-                + "                    FOREIGN KEY (studentID) REFERENCES userStudent(userID)";
+                + "            teacherID  INT ,\n"
+                + "            FOREIGN KEY (studentID) REFERENCES userStudent(userID)";
          
          createString = "CREATE TABLE if not exists practice (\n" 
                 + "            dateTimePractice     DATETIME      PRIMARY KEY,\n"

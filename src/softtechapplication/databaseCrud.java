@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package softtechapplication;
+package src.softtechapplication;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +21,7 @@ public class databaseCrud {
    
      public static void insertUserStudent(Integer userID, String username, String password, String level, String languages, String practiceID, String langCode) {
 
-        Connection con = ConnectToDB.getConnection();
+        Connection con = softtechapplication.ConnectToDB.getConnection();
         Statement stmt = null;
         
         Integer studentID = userID;
@@ -64,7 +64,7 @@ public class databaseCrud {
      
         public static void insertUserAdmin(Integer userID, String username, String password, String type, Integer langCode) {
 
-        Connection con = ConnectToDB.getConnection();
+        Connection con = softtechapplication.ConnectToDB.getConnection();
         Statement stmt = null;
         
         Integer adminID = userID;
@@ -104,7 +104,7 @@ public class databaseCrud {
     
     public static void insertUserTeacher(Integer userID, String username, String password, String language) {
 
-        Connection con = ConnectToDB.getConnection();
+        Connection con = softtechapplication.ConnectToDB.getConnection();
         Statement stmt = null;
         
         Integer teacherID = userID;
@@ -143,7 +143,7 @@ public class databaseCrud {
          
         public static void delUser(int userID, String tableSelection) {
 
-        Connection con = ConnectToDB.getConnection();
+        Connection con = softtechapplication.ConnectToDB.getConnection();
         Statement stmt = null;
         String sqlString = "DELETE from " + tableSelection + " WHERE userID=" + userID;
         try {
@@ -173,7 +173,7 @@ public class databaseCrud {
 
          
      public static void showAll(String tableSelection) {
-        Connection con = ConnectToDB.getConnection();
+        Connection con = softtechapplication.ConnectToDB.getConnection();
         Statement stmt = null;
         
         try {
