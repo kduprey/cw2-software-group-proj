@@ -1,1 +1,1 @@
-# cw2-software-group-proj
+# cw2-software-group-project
