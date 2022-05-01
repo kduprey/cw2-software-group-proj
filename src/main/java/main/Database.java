@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Database {
-    private final String db_url = "jdbc:sqlite:/Users/anastasiiamazur/IdeaProjects/cw2-software-group-proj2/softTechDB.db";
+    private final String db_url = "jdbc:sqlite:/Users/anastasiiamazur/IdeaProjects/cw2-software-group-proj/softTechDB.db";
     private Connection connection;
 
     public static void main(String args[]){
@@ -17,7 +17,6 @@ public class Database {
             throw new RuntimeException(e);
         }
         Database db = new Database();
-        db.initTables();
     }
 
     public Database(){
