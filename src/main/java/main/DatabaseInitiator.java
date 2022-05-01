@@ -11,7 +11,7 @@ public class DatabaseInitiator {
     public static void baseInit(Connection connection){
         ArrayList<String> queries = new ArrayList<>();
         queries.add("CREATE TABLE IF NOT EXISTS userStudent ("
-                + "userID INT PRIMARY KEY,"
+                + "userID INTEGER PRIMARY KEY,"
                 + "username VARCHAR(30),"
                 + "password VARCHAR(30),"
                 + "studentLevel VARCHAR(2),"
