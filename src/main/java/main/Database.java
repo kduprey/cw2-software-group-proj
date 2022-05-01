@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ *
+ * @author Anastasiia Mazur
+ */
 public class Database {
     private String db_url;
     private Connection connection;
@@ -21,7 +25,7 @@ public class Database {
                 "English",
                 1,
                 1);
-        db.update(student.generateInsertString());
+        db.update(student.generateInsertQuery());
     }
 
     public Database(String dbpath){

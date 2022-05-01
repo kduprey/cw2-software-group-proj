@@ -1,5 +1,10 @@
 package main;
 
+
+/**
+ *
+ * @author Anastasiia Mazur
+ */
 public class UserStudent {
 
     private int userId;
@@ -26,7 +31,23 @@ public class UserStudent {
         this.languageCode = languageCode;
     }
 
-    public String generateInsertString(){
+    public String generateUpdateQuery(){
+        return "UPDATE userData SET " +
+                "username = '"+this.username+"'," +
+                "password = '"+this.password+"'," +
+                "studentLevel = '"+this.studentLevel+"'," +
+                "studentLanguages = '"+this.studentLanguages+"'," +
+                "studentPracticeID = '"+this.studentPracticeID+"'," +
+                "languageCode = '"+this.languageCode+"'," +
+                " WHERE " +
+                "userId = '"+this.userId+"'";
+    }
+
+    public String generateDeleteQuery(){
+        return "DELETE FROM userStudent WHERE userId = '" + this.userId + "';" ;
+    }
+
+    public String generateInsertQuery(){
         return "INSERT INTO userStudent " +
                 "('username', 'password', 'studentLevel', 'studentLanguages', 'studentPracticeID', 'languageCode')" +
                 " VALUES (" +

@@ -5,7 +5,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
+/**
+ *
+ * @author Anastasiia Mazur
+ */
 public class DatabaseInitiator {
 
     public static void baseInit(Connection connection){
