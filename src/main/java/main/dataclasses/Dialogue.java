@@ -16,6 +16,7 @@ public class Dialogue {
     private String dialogueSubContext;
     private String dialogueKeyVocab;
     private String dialogueGrammarStructure;
+    private String dialogueLevel;
     private int languageId;
     private Database db;
     private boolean added;
@@ -25,12 +26,14 @@ public class Dialogue {
                     String dialogueSubContext,
                     String dialogueKeyVocab,
                     String dialogueGrammarStructure,
+                    String dialogueLevel,
                     int languageId){
         this.db = db;
         this.dialogueContext = dialogueContext;
         this.dialogueSubContext = dialogueSubContext;
         this.dialogueKeyVocab = dialogueKeyVocab;
         this.dialogueGrammarStructure = dialogueGrammarStructure;
+        this.dialogueLevel = dialogueLevel;
         this.languageId = languageId;
         this.added = false;
     }
@@ -41,6 +44,7 @@ public class Dialogue {
                     "dialogueContext = '" + this.dialogueContext + "'," +
                     "dialogueSubContext = '" + this.dialogueSubContext + "'," +
                     "dialogueKeyVocab = '" + this.dialogueKeyVocab + "'," +
+                    "dialogueLevel = '" + this.dialogueLevel + "'," +
                     "dialogueGrammarStructure = '" + this.dialogueGrammarStructure + "'," +
                     "languageId = '" + this.languageId + "'" +
                     " WHERE " +
@@ -64,13 +68,14 @@ public class Dialogue {
     public void insert(){
         if(!this.added) {
             String query = "INSERT INTO Dialogue " +
-                    "('dialogueContext', 'dialogueSubContext', 'dialogueKeyVocab', 'dialogueGrammarStructure', 'languageId')" +
+                    "('dialogueContext', 'dialogueSubContext', 'dialogueKeyVocab', 'dialogueGrammarStructure', 'languageId', 'dialogueLevel')" +
                     " VALUES (" +
                     "'" + this.dialogueContext + "'," +
                     "'" + this.dialogueSubContext + "'," +
                     "'" + this.dialogueKeyVocab + "'," +
                     "'" + this.dialogueGrammarStructure + "'," +
-                    "'" + this.languageId + "'" +
+                    "'" + this.languageId + "'," +
+                    "'" + this.dialogueLevel + "'" +
                     ");";
             this.db.update(query);
             ResultSet set = this.db.query("SELECT * from Dialogue order by dialogueId DESC LIMIT 1;");
@@ -88,6 +93,14 @@ public class Dialogue {
     /*
     GETTERS AND SETTERS
      */
+
+    public String getDialogueLevel() {
+        return dialogueLevel;
+    }
+
+    public void setDialogueLevel(String dialogueLevel) {
+        this.dialogueLevel = dialogueLevel;
+    }
 
     public int getDialogueId() {
         return dialogueId;

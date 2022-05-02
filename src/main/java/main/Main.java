@@ -2,12 +2,17 @@ package main;
 
 import main.dataclasses.*;
 
+import java.io.IOException;
+
 public class Main {
 
     public static void main(String args[]){
         String dbpath = "/Users/anastasiiamazur/IdeaProjects/cw2-software-group-proj/softTechDB.db";
         Database db = new Database(dbpath);
+        DatabaseInitiator.dropTables(db.getConnection());
         DatabaseInitiator.baseInit(db.getConnection());
+        DatabaseInitiator.initData(db);
+
 
 //        Admin admin = new Admin(db,"vovik", "pass123", "main", 12);
 //        admin.insert();
@@ -70,11 +75,11 @@ public class Main {
 //        choice.update(choice.getStudentId(), 123);
 //        choice.delete();
 
-        Teacher teacher = new Teacher(db, "mrgrigorovich", "password", "English");
-        teacher.insert();
-        teacher.setTeacherPassword("ihatemystudents");
-        teacher.update();
-        teacher.delete();
+//        Teacher teacher = new Teacher(db, "mrgrigorovich", "password", "English");
+//        teacher.insert();
+//        teacher.setTeacherPassword("ihatemystudents");
+//        teacher.update();
+//        teacher.delete();
 
     }
 
