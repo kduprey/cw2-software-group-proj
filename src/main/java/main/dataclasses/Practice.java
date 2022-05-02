@@ -40,6 +40,10 @@ public class Practice {
                     " WHERE " +
                     "teacherId = '" + this.teacherId + "' and dialogueId = '"+this.dialogueId+"' and studentId = '"+this.studentId+"' and practiceDateTime = '"+this.practiceDateTime+"';";
             this.db.update(query);
+            this.teacherId = teacherId;
+            this.dialogueId = dialogueId;
+            this.studentId = studentId;
+            this.practiceDateTime = practiceDateTime;
         }else{
             System.out.println("Unable to update Practice, the object has to be added to database first...");
         }

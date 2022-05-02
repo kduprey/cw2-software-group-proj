@@ -33,6 +33,8 @@ public class StudentLangChoice {
                     " WHERE " +
                     "languageId = '" + this.languageId + "' and studentId = '"+this.studentId+"';";
             this.db.update(query);
+            this.studentId = studentId;
+            this.languageId = languageId;
         }else{
             System.out.println("Unable to update StudentLangChoice, the object has to be added to database first...");
         }

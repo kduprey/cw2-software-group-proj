@@ -15,13 +15,13 @@ public class DatabaseInitiator {
         ArrayList<String> queries = new ArrayList<>();
 
         queries.add("CREATE TABLE IF NOT EXISTS Student ("
-                + "userID INTEGER PRIMARY KEY,"
-                + "username VARCHAR(30),"
-                + "password VARCHAR(30),"
+                + "studentId INTEGER PRIMARY KEY,"
+                + "studentUsername VARCHAR(30),"
+                + "studentPassword VARCHAR(30),"
                 + "studentLevel VARCHAR(2),"
                 + "studentLanguages VARCHAR(100),"
-                + "studentPracticeID INT,"
-                + "languageCode INT);");
+                + "studentPracticeId INT,"
+                + "languageId INT);");
 
         queries.add("CREATE TABLE IF NOT EXISTS Admin ("
                 + "adminId INTEGER PRIMARY KEY,"
@@ -50,7 +50,7 @@ public class DatabaseInitiator {
                 + "teacherId INT);");
 
         queries.add("CREATE TABLE IF NOT EXISTS Practice ("
-                + "dateTimePractice VARCHAR(30),"
+                + "practiceDateTime VARCHAR(30),"
                 + "dialogueId INT,"
                 + "studentId INT,"
                 + "teacherID INT);");
@@ -85,7 +85,7 @@ public class DatabaseInitiator {
             throw new RuntimeException(e);
         }
         for(String query: queries){
-            System.out.println(query);
+//            System.out.println(query);
             try {
                 statement.executeUpdate(query);
             } catch (SQLException e) {

@@ -27,12 +27,14 @@ public class AdminLangManage {
 
     public void update(int adminId, int languageId){
         if(this.added) {
-            String query = "UPDATE Admin SET " +
+            String query = "UPDATE AdminLangManage SET " +
                     "adminId = '" + adminId + "'," +
                     "languageId = '" + languageId + "'" +
                     " WHERE " +
                     "adminId = '" + this.adminId + "' and languageId = '"+this.languageId+"';";
             this.db.update(query);
+            this.adminId = adminId;
+            this.languageId = languageId;
         }else{
             System.out.println("Unable to update AdminLangManage, the object has to be added to database first...");
         }
@@ -40,7 +42,7 @@ public class AdminLangManage {
 
     public void delete(){
         if(this.added) {
-            String query = "DELETE FROM userAdmin WHERE userID = '" + this.adminId + "' and languageId = '"+this.languageId+"';";
+            String query = "DELETE FROM AdminLangManage WHERE adminId = '" + this.adminId + "' and languageId = '"+this.languageId+"';";
             this.db.update(query);
             this.added = false;
         }else{
@@ -50,7 +52,7 @@ public class AdminLangManage {
 
     public void insert(){
         if(!this.added) {
-            String query = "INSERT INTO userAdmin " +
+            String query = "INSERT INTO AdminLangManage " +
                     "('adminId', 'languageId')" +
                     " VALUES (" +
                     "'" + this.adminId + "'," +
