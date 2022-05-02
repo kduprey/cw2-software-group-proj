@@ -38,10 +38,6 @@ public class UserStudent {
         this.added = false;
     }
 
-    public static String generateLastRecordQuery(){
-        return "SELECT * from userStudent order by userID DESC LIMIT 1;";
-    }
-
     public void update(){
         if(this.added) {
             String query = "UPDATE userStudent SET " +

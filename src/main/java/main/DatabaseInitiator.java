@@ -56,10 +56,10 @@ public class DatabaseInitiator {
                 + "dialogueGrammarStructure VARCHAR(150),"
                 + "languageCode INT);");
         queries.add("CREATE TABLE IF NOT EXISTS conversation ("
-                + "convCode INT PRIMARY KEY,"
-                + "convText VARCHAR(500),"
-                + "convTranslation VARCHAR(150),"
-                + "dialogueCode INT);");
+                + "conversationId INT PRIMARY KEY,"
+                + "conversationText VARCHAR(500),"
+                + "conversationTranslation VARCHAR(150),"
+                + "dialogueId INT);");
 
         Statement statement;
         try {
