@@ -2,6 +2,9 @@ package main.dataclasses;
 
 import main.Database;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Anastasiia Mazur
@@ -25,6 +28,52 @@ public class Conversation {
         this.conversationTranslation = conversationTranslation;
         this.dialogueId = dialogueId;
         this.added = false;
+    }
+
+    public void update(){
+        if(this.added) {
+            String query = "UPDATE Conversation SET " +
+                    "conversationText = '" + this.conversationText + "'," +
+                    "conversationTranslation = '" + this.conversationTranslation + "'," +
+                    "dialogueId = '" + this.dialogueId + "'" +
+                    " WHERE " +
+                    "conversationId = '" + this.conversationId + "';";
+            this.db.update(query);
+        }else{
+            System.out.println("Unable to update Conversation, the object has to be added to database first...");
+        }
+    }
+
+    public void delete(){
+        if(this.added) {
+            String query = "DELETE FROM Conversation WHERE conversationId = '" + this.conversationId + "';";
+            this.db.update(query);
+            this.added = false;
+        }else{
+            System.out.println("Unable to delete Conversation, the object has to be added to database first...");
+        }
+    }
+
+    public void insert(){
+        if(!this.added) {
+            String query = "INSERT INTO Conversation " +
+                    "('conversationText', 'conversationTranslation', 'dialogueId')" +
+                    " VALUES (" +
+                    "'" + this.conversationText + "'," +
+                    "'" + this.conversationTranslation + "'," +
+                    "'" + this.dialogueId + "'" +
+                    ");";
+            this.db.update(query);
+            ResultSet set = this.db.query("SELECT * from Conversation order by conversationId DESC LIMIT 1;");
+            try {
+                this.conversationId = set.getInt("conversationId");
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            this.added = true;
+        }else{
+            System.out.println("Unable to insert Conversation, the object is already in the database...");
+        }
     }
 
     /*

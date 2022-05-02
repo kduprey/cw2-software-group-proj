@@ -2,6 +2,9 @@ package main.dataclasses;
 
 import main.Database;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Anastasiia Mazur
@@ -20,6 +23,44 @@ public class StudentLangChoice {
         this.studentId = studentId;
         this.languageId = languageId;
         this.added = false;
+    }
+
+    public void update(int studentId, int languageId){
+        if(this.added) {
+            String query = "UPDATE StudentLangChoice SET " +
+                    "studentId = '" + studentId + "'," +
+                    "languageId = '" + languageId + "'" +
+                    " WHERE " +
+                    "languageId = '" + this.languageId + "' and studentId = '"+this.studentId+"';";
+            this.db.update(query);
+        }else{
+            System.out.println("Unable to update StudentLangChoice, the object has to be added to database first...");
+        }
+    }
+
+    public void delete(){
+        if(this.added) {
+            String query = "DELETE FROM StudentLangChoice WHERE languageId = '" + this.languageId + "' and studentId = '"+this.studentId+"';";
+            this.db.update(query);
+            this.added = false;
+        }else{
+            System.out.println("Unable to delete StudentLangChoice, the object has to be added to database first...");
+        }
+    }
+
+    public void insert(){
+        if(!this.added) {
+            String query = "INSERT INTO StudentLangChoice " +
+                    "('languageId', 'studentId')" +
+                    " VALUES (" +
+                    "'" + this.languageId + "'," +
+                    "'" + this.studentId + "'" +
+                    ");";
+            this.db.update(query);
+            this.added = true;
+        }else{
+            System.out.println("Unable to insert StudentLangChoice, the object is already in the database...");
+        }
     }
 
     /*

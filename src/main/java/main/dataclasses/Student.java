@@ -16,7 +16,7 @@ public class Student {
     private String studentPassword;
     private String studentLevel;
     private String studentLanguages;
-    private int studentPracticeID;
+    private int studentPracticeId;
     private int languageId;
     private Database db;
     private boolean added;
@@ -26,38 +26,38 @@ public class Student {
                    String studentPassword,
                    String studentLevel,
                    String studentLanguages,
-                   int studentPracticeID,
+                   int studentPracticeId,
                    int languageId){
         this.db = db;
         this.studentUsername = studentUsername;
         this.studentPassword = studentPassword;
         this.studentLevel = studentLevel;
         this.studentLanguages = studentLanguages;
-        this.studentPracticeID = studentPracticeID;
+        this.studentPracticeId = studentPracticeId;
         this.languageId = languageId;
         this.added = false;
     }
 
     public void update(){
         if(this.added) {
-            String query = "UPDATE userStudent SET " +
-                    "username = '" + this.studentUsername + "'," +
-                    "password = '" + this.studentPassword + "'," +
+            String query = "UPDATE Student SET " +
+                    "studentUsername = '" + this.studentUsername + "'," +
+                    "studentPassword = '" + this.studentPassword + "'," +
                     "studentLevel = '" + this.studentLevel + "'," +
                     "studentLanguages = '" + this.studentLanguages + "'," +
-                    "studentPracticeID = '" + this.studentPracticeID + "'," +
-                    "languageCode = '" + this.languageId + "'" +
+                    "studentPracticeId = '" + this.studentPracticeId + "'," +
+                    "languageId = '" + this.languageId + "'" +
                     " WHERE " +
-                    "userID = '" + this.studentId + "';";
+                    "studentId = '" + this.studentId + "';";
             this.db.update(query);
         }else{
-            System.out.println("Unable to update user student, the user has to be inserted into db first...");
+            System.out.println("Unable to update Student, the user has to be inserted into db first...");
         }
     }
 
     public void delete(){
         if(this.added){
-            String query = "DELETE FROM userStudent WHERE userId = '" + this.studentId + "';";
+            String query = "DELETE FROM Student WHERE studentId = '" + this.studentId + "';";
             this.db.update(query);
             this.added = false;
         }else{
@@ -67,27 +67,27 @@ public class Student {
 
     public void insert(){
         if(!this.added) {
-            String query = "INSERT INTO userStudent " +
-                    "('username', 'password', 'studentLevel', 'studentLanguages', 'studentPracticeID', 'languageCode')" +
+            String query = "INSERT INTO Student " +
+                    "('studentUsername', 'studentPassword', 'studentLevel', 'studentLanguages', 'studentPracticeId', 'languageId')" +
                     " VALUES (" +
                     "'" + this.studentUsername + "'," +
                     "'" + this.studentPassword + "'," +
                     "'" + this.studentLevel + "'," +
                     "'" + this.studentLanguages + "'," +
-                    "'" + this.studentPracticeID + "'," +
+                    "'" + this.studentPracticeId + "'," +
                     "'" + this.languageId + "'" +
                     ");";
             this.db.update(query);
             this.added = true;
-            ResultSet set = this.db.query("SELECT * from userStudent order by userID DESC LIMIT 1;");
+            ResultSet set = this.db.query("SELECT * from Student order by studentId DESC LIMIT 1;");
             try {
-                this.studentId = set.getInt("userID");
+                this.studentId = set.getInt("studentId");
             } catch (SQLException e) {
                 System.out.println("Unable to get the id of the inserted user");
                 throw new RuntimeException(e);
             }
         }else{
-            System.out.println("Unable to insert user student, the user is already in the db...");
+            System.out.println("Unable to insert Student, the user is already in the db...");
         }
     }
     /*
@@ -134,12 +134,12 @@ public class Student {
         this.studentLanguages = studentLanguages;
     }
 
-    public int getStudentPracticeID() {
-        return studentPracticeID;
+    public int getStudentPracticeId() {
+        return studentPracticeId;
     }
 
-    public void setStudentPracticeID(int studentPracticeID) {
-        this.studentPracticeID = studentPracticeID;
+    public void setStudentPracticeId(int studentPracticeId) {
+        this.studentPracticeId = studentPracticeId;
     }
 
     public int getLanguageId() {

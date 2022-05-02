@@ -2,6 +2,9 @@ package main.dataclasses;
 
 import main.Database;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Anastasiia Mazur
@@ -25,6 +28,48 @@ public class Practice {
         this.dialogueId = dialogueId;
         this.studentId = studentId;
         this.practiceDateTime = practiceDateTime;
+    }
+
+    public void update(int teacherId, int dialogueId, int studentId, String practiceDateTime){
+        if(this.added) {
+            String query = "UPDATE Practice SET " +
+                    "teacherId = '" + teacherId + "'," +
+                    "dialogueId = '" + dialogueId + "'," +
+                    "studentId = '" + studentId + "'," +
+                    "practiceDateTime = '" + practiceDateTime + "'" +
+                    " WHERE " +
+                    "teacherId = '" + this.teacherId + "' and dialogueId = '"+this.dialogueId+"' and studentId = '"+this.studentId+"' and practiceDateTime = '"+this.practiceDateTime+"';";
+            this.db.update(query);
+        }else{
+            System.out.println("Unable to update Practice, the object has to be added to database first...");
+        }
+    }
+
+    public void delete(){
+        if(this.added) {
+            String query = "DELETE FROM Practice WHERE teacherId = '" + this.teacherId + "' and dialogueId = '"+this.dialogueId+"' and studentId = '"+this.studentId+"' and practiceDateTime = '"+this.practiceDateTime+"';";
+            this.db.update(query);
+            this.added = false;
+        }else{
+            System.out.println("Unable to delete Practice, the object has to be added to database first...");
+        }
+    }
+
+    public void insert(){
+        if(!this.added) {
+            String query = "INSERT INTO Practice " +
+                    "('teacherId', 'dialogueId', 'studentId', 'practiceDateTime')" +
+                    " VALUES (" +
+                    "'" + this.teacherId + "'," +
+                    "'" + this.dialogueId + "'," +
+                    "'" + this.studentId + "'," +
+                    "'" + this.practiceDateTime + "'" +
+                    ");";
+            this.db.update(query);
+            this.added = true;
+        }else{
+            System.out.println("Unable to insert Practice, the object is already in the database...");
+        }
     }
 
     /*

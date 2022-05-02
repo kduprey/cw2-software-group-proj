@@ -2,6 +2,9 @@ package main.dataclasses;
 
 import main.Database;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Anastasiia Mazur
@@ -30,6 +33,56 @@ public class Dialogue {
         this.dialogueGrammarStructure = dialogueGrammarStructure;
         this.languageId = languageId;
         this.added = false;
+    }
+
+    public void update(){
+        if(this.added) {
+            String query = "UPDATE Dialogue SET " +
+                    "dialogueContext = '" + this.dialogueContext + "'," +
+                    "dialogueSubContext = '" + this.dialogueSubContext + "'," +
+                    "dialogueKeyVocab = '" + this.dialogueKeyVocab + "'," +
+                    "dialogueGrammarStructure = '" + this.dialogueGrammarStructure + "'," +
+                    "languageId = '" + this.languageId + "'" +
+                    " WHERE " +
+                    "dialogueId = '" + this.dialogueId + "';";
+            this.db.update(query);
+        }else{
+            System.out.println("Unable to update Dialogue, the object has to be added to database first...");
+        }
+    }
+
+    public void delete(){
+        if(this.added) {
+            String query = "DELETE FROM Dialogue WHERE dialogueId = '" + this.dialogueId + "';";
+            this.db.update(query);
+            this.added = false;
+        }else{
+            System.out.println("Unable to delete Dialogue, the object has to be added to database first...");
+        }
+    }
+
+    public void insert(){
+        if(!this.added) {
+            String query = "INSERT INTO Dialogue " +
+                    "('dialogueContext', 'dialogueSubContext', 'dialogueKeyVocab', 'dialogueGrammarStructure', 'languageId')" +
+                    " VALUES (" +
+                    "'" + this.dialogueContext + "'," +
+                    "'" + this.dialogueSubContext + "'," +
+                    "'" + this.dialogueKeyVocab + "'," +
+                    "'" + this.dialogueGrammarStructure + "'," +
+                    "'" + this.languageId + "'" +
+                    ");";
+            this.db.update(query);
+            ResultSet set = this.db.query("SELECT * from Dialogue order by dialogueId DESC LIMIT 1;");
+            try {
+                this.dialogueId = set.getInt("dialogueId");
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            this.added = true;
+        }else{
+            System.out.println("Unable to insert Dialogue, the object is already in the database...");
+        }
     }
 
     /*

@@ -35,33 +35,33 @@ public class Admin {
 
     public void update(){
         if(this.added) {
-            String query = "UPDATE userAdmin SET " +
-                    "username = '" + this.adminUsername + "'," +
-                    "password = '" + this.adminPassword + "'," +
+            String query = "UPDATE Admin SET " +
+                    "adminUsername = '" + this.adminUsername + "'," +
+                    "adminPassword = '" + this.adminPassword + "'," +
                     "adminType = '" + this.adminType + "'," +
-                    "languageCode = '" + this.languageId + "'" +
+                    "languageId = '" + this.languageId + "'" +
                     " WHERE " +
-                    "userID = '" + this.adminId + "';";
+                    "adminId = '" + this.adminId + "';";
             this.db.update(query);
         }else{
-            System.out.println("Unable to update user student, the object has to be added to database first...");
+            System.out.println("Unable to update Admin, the object has to be added to database first...");
         }
     }
 
     public void delete(){
         if(this.added) {
-            String query = "DELETE FROM userAdmin WHERE userID = '" + this.adminId + "';";
+            String query = "DELETE FROM Admin WHERE adminId = '" + this.adminId + "';";
             this.db.update(query);
             this.added = false;
         }else{
-            System.out.println("Unable to delete user student, the object has to be added to database first...");
+            System.out.println("Unable to delete Admin, the object has to be added to database first...");
         }
     }
 
     public void insert(){
         if(!this.added) {
-            String query = "INSERT INTO userAdmin " +
-                    "('username', 'password', 'adminType', 'languageCode')" +
+            String query = "INSERT INTO Admin " +
+                    "('adminUsername', 'adminPassword', 'adminType', 'languageId')" +
                     " VALUES (" +
                     "'" + this.adminUsername + "'," +
                     "'" + this.adminPassword + "'," +
@@ -69,15 +69,15 @@ public class Admin {
                     "'" + this.languageId + "'" +
                     ");";
             this.db.update(query);
-            ResultSet set = this.db.query("SELECT * from userAdmin order by userID DESC LIMIT 1;");
+            ResultSet set = this.db.query("SELECT * from Admin order by adminId DESC LIMIT 1;");
             try {
-                this.adminId = set.getInt("userID");
+                this.adminId = set.getInt("adminId");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
             this.added = true;
         }else{
-            System.out.println("Unable to insert user student, the object is already in the database...");
+            System.out.println("Unable to insert Admin, the object is already in the database...");
         }
     }
 

@@ -2,6 +2,9 @@ package main.dataclasses;
 
 import main.Database;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Anastasiia Mazur
@@ -20,6 +23,44 @@ public class AdminLangManage {
         this.adminId = adminId;
         this.languageId = languageId;
         this.added = false;
+    }
+
+    public void update(int adminId, int languageId){
+        if(this.added) {
+            String query = "UPDATE Admin SET " +
+                    "adminId = '" + adminId + "'," +
+                    "languageId = '" + languageId + "'" +
+                    " WHERE " +
+                    "adminId = '" + this.adminId + "' and languageId = '"+this.languageId+"';";
+            this.db.update(query);
+        }else{
+            System.out.println("Unable to update AdminLangManage, the object has to be added to database first...");
+        }
+    }
+
+    public void delete(){
+        if(this.added) {
+            String query = "DELETE FROM userAdmin WHERE userID = '" + this.adminId + "' and languageId = '"+this.languageId+"';";
+            this.db.update(query);
+            this.added = false;
+        }else{
+            System.out.println("Unable to delete AdminLangManage, the object has to be added to database first...");
+        }
+    }
+
+    public void insert(){
+        if(!this.added) {
+            String query = "INSERT INTO userAdmin " +
+                    "('adminId', 'languageId')" +
+                    " VALUES (" +
+                    "'" + this.adminId + "'," +
+                    "'" + this.languageId + "'" +
+                    ");";
+            this.db.update(query);
+            this.added = true;
+        }else{
+            System.out.println("Unable to insert user AdminLangManage, the object is already in the database...");
+        }
     }
 
     /*

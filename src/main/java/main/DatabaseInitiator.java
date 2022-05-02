@@ -13,7 +13,8 @@ public class DatabaseInitiator {
 
     public static void baseInit(Connection connection){
         ArrayList<String> queries = new ArrayList<>();
-        queries.add("CREATE TABLE IF NOT EXISTS userStudent ("
+
+        queries.add("CREATE TABLE IF NOT EXISTS Student ("
                 + "userID INTEGER PRIMARY KEY,"
                 + "username VARCHAR(30),"
                 + "password VARCHAR(30),"
@@ -21,45 +22,60 @@ public class DatabaseInitiator {
                 + "studentLanguages VARCHAR(100),"
                 + "studentPracticeID INT,"
                 + "languageCode INT);");
-        queries.add("CREATE TABLE IF NOT EXISTS userAdmin ("
-                + "userID INTEGER PRIMARY KEY,"
-                + "username VARCHAR(30),"
-                + "password VARCHAR(30),"
+
+        queries.add("CREATE TABLE IF NOT EXISTS Admin ("
+                + "adminId INTEGER PRIMARY KEY,"
+                + "adminUsername VARCHAR(30),"
+                + "adminPassword VARCHAR(30),"
                 + "adminType VARCHAR(20),"
-                + "languageCode INT) ;");
-        queries.add("CREATE TABLE IF NOT EXISTS userTeacher ("
-                + "userID INT PRIMARY KEY,"
-                + "username VARCHAR(30),"
-                + "password VARCHAR(30),"
-                + "spokenLanguage VARCHAR(100));");
-        queries.add("CREATE TABLE IF NOT EXISTS language ("
-                + "languageCode INT PRIMARY KEY,"
+                + "languageId INT) ;");
+
+        queries.add("CREATE TABLE IF NOT EXISTS Teacher ("
+                + "teacherId INTEGER PRIMARY KEY,"
+                + "teacherUsername VARCHAR(30),"
+                + "teacherPassword VARCHAR(30),"
+                + "teacherLanguage VARCHAR(100));");
+
+        queries.add("CREATE TABLE IF NOT EXISTS Language ("
+                + "languageID INTEGER PRIMARY KEY,"
                 + "languageName VARCHAR(30),"
                 + "languageLevel VARCHAR(2));");
-        queries.add("CREATE TABLE IF NOT EXISTS progress ("
-                + "progressCode INT PRIMARY KEY,"
-                + "taskFrequency VARCHAR(30),"
-                + "studentPerformance VARCHAR(30),"
-                + "topics VARCHAR(30),"
-                + "studentID INT,"
+
+        queries.add("CREATE TABLE IF NOT EXISTS Progress ("
+                + "progressId INTEGER PRIMARY KEY,"
+                + "progressTaskFrequency VARCHAR(30),"
+                + "progressStudentPerformance VARCHAR(30),"
+                + "progressTopics VARCHAR(30),"
+                + "studentId INT,"
+                + "teacherId INT);");
+
+        queries.add("CREATE TABLE IF NOT EXISTS Practice ("
+                + "dateTimePractice VARCHAR(30),"
+                + "dialogueId INT,"
+                + "studentId INT,"
                 + "teacherID INT);");
-        queries.add("CREATE TABLE IF NOT EXISTS practice ("
-                + "dateTimePractice DATETIME PRIMARY KEY,"
-                + "dialogueCode INT,"
-                + "studentUserID INT,"
-                + "teacherUserID INT);");
-        queries.add("CREATE TABLE IF NOT EXISTS dialogue ("
-                + "dialogueCode INT PRIMARY KEY,"
+
+        queries.add("CREATE TABLE IF NOT EXISTS Dialogue ("
+                + "dialogueId INTEGER PRIMARY KEY,"
                 + "dialogueContext VARCHAR(100),"
                 + "dialogueSubContext VARCHAR(100),"
                 + "dialogueKeyVocab VARCHAR(200),"
                 + "dialogueGrammarStructure VARCHAR(150),"
-                + "languageCode INT);");
-        queries.add("CREATE TABLE IF NOT EXISTS conversation ("
-                + "conversationId INT PRIMARY KEY,"
+                + "languageId INT);");
+
+        queries.add("CREATE TABLE IF NOT EXISTS Conversation ("
+                + "conversationId INTEGER PRIMARY KEY,"
                 + "conversationText VARCHAR(500),"
                 + "conversationTranslation VARCHAR(150),"
                 + "dialogueId INT);");
+
+        queries.add("CREATE TABLE IF NOT EXISTS AdminLangManage ("
+                + "adminId INT,"
+                + "languageId INT);");
+
+        queries.add("CREATE TABLE IF NOT EXISTS StudentLangChoice ("
+                + "studentId INT,"
+                + "languageId INT);");
 
         Statement statement;
         try {
