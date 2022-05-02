@@ -22,7 +22,7 @@ public class DatabaseInitiator {
                 + "studentPracticeID INT,"
                 + "languageCode INT);");
         queries.add("CREATE TABLE IF NOT EXISTS userAdmin ("
-                + "userID INT PRIMARY KEY,"
+                + "userID INTEGER PRIMARY KEY,"
                 + "username VARCHAR(30),"
                 + "password VARCHAR(30),"
                 + "adminType VARCHAR(20),"

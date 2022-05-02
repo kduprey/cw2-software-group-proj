@@ -1,9 +1,9 @@
 package main;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import main.dataclasses.UserAdmin;
+import main.dataclasses.UserStudent;
+
+import java.sql.*;
 
 /**
  *
@@ -17,15 +17,18 @@ public class Database {
         String dbpath = "/Users/anastasiiamazur/IdeaProjects/cw2-software-group-proj/softTechDB.db";
         Database db = new Database(dbpath);
         DatabaseInitiator.baseInit(db.getConnection());
-        UserStudent student = new UserStudent(
-                1,
-                "archimond",
-                "pass123",
-                "A1",
-                "English",
-                1,
-                1);
-        db.update(student.generateInsertQuery());
+//        UserStudent student = new UserStudent(db,"armextos", "afewrfasdf123", "A1", "English", 1, 1);
+//        student.insert();
+//        student.setPassword("Pass123");
+//        student.update();
+//        student.delete();
+
+//        UserAdmin admin = new UserAdmin(db,"vovik", "pass123", "main", 12);
+//        admin.insert();
+//        admin.setPassword("newPass123");
+//        admin.update();
+//        admin.delete();
+
     }
 
     public Database(String dbpath){
@@ -46,6 +49,24 @@ public class Database {
 
     public Connection getConnection(){
         return this.connection;
+    }
+    
+    public ResultSet query(String query){
+        Statement statement;
+        try {
+            statement = connection.createStatement();
+        } catch (SQLException e) {
+            System.out.println("Not able to create an update statement...");
+            throw new RuntimeException(e);
+        }
+        ResultSet set;
+        try {
+            set = statement.executeQuery(query);
+        } catch (SQLException e) {
+            System.out.println("Failed to execute sql query...");
+            throw new RuntimeException(e);
+        }
+        return set;
     }
 
     public void update(String query){
