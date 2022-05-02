@@ -2,7 +2,7 @@ package main.dataclasses;
 
 import main.Database;
 
-public class UserTeacher {
+public class Teacher {
 
     private int teacherId;
     private String teacherUsername;
@@ -11,10 +11,10 @@ public class UserTeacher {
     private Database db;
     private boolean added;
 
-    public UserTeacher(Database db,
-                       String teacherUsername,
-                       String teacherPassword,
-                       String teacherLanguage){
+    public Teacher(Database db,
+                   String teacherUsername,
+                   String teacherPassword,
+                   String teacherLanguage){
         this.teacherUsername = teacherUsername;
         this.teacherPassword = teacherPassword;
         this.teacherLanguage = teacherLanguage;

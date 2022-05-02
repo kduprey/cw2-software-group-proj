@@ -1,6 +1,6 @@
 package main;
 
-import main.dataclasses.UserStudent;
+import main.dataclasses.Student;
 
 public class Main {
 
@@ -9,9 +9,9 @@ public class Main {
         Database db = new Database(dbpath);
         DatabaseInitiator.baseInit(db.getConnection());
 
-        UserStudent student = new UserStudent(db,"armextos", "afewrfasdf123", "A1", "English", 1, 1);
+        Student student = new Student(db,"armextos", "afewrfasdf123", "A1", "English", 1, 1);
         student.insert();
-        student.setPassword("Pass123");
+        student.setStudentPassword("Pass123");
         student.update();
         student.delete();
 

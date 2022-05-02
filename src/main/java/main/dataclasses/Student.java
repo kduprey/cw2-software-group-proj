@@ -9,46 +9,46 @@ import java.sql.SQLException;
  *
  * @author Anastasiia Mazur
  */
-public class UserStudent {
+public class Student {
 
-    private int userID;
-    private String username;
-    private String password;
+    private int studentId;
+    private String studentUsername;
+    private String studentPassword;
     private String studentLevel;
     private String studentLanguages;
     private int studentPracticeID;
-    private int languageCode;
+    private int languageId;
     private Database db;
     private boolean added;
 
-    public UserStudent(Database db,
-                       String username,
-                       String password,
-                       String studentLevel,
-                       String studentLanguages,
-                       int studentPracticeID,
-                       int languageCode){
+    public Student(Database db,
+                   String studentUsername,
+                   String studentPassword,
+                   String studentLevel,
+                   String studentLanguages,
+                   int studentPracticeID,
+                   int languageId){
         this.db = db;
-        this.username = username;
-        this.password = password;
+        this.studentUsername = studentUsername;
+        this.studentPassword = studentPassword;
         this.studentLevel = studentLevel;
         this.studentLanguages = studentLanguages;
         this.studentPracticeID = studentPracticeID;
-        this.languageCode = languageCode;
+        this.languageId = languageId;
         this.added = false;
     }
 
     public void update(){
         if(this.added) {
             String query = "UPDATE userStudent SET " +
-                    "username = '" + this.username + "'," +
-                    "password = '" + this.password + "'," +
+                    "username = '" + this.studentUsername + "'," +
+                    "password = '" + this.studentPassword + "'," +
                     "studentLevel = '" + this.studentLevel + "'," +
                     "studentLanguages = '" + this.studentLanguages + "'," +
                     "studentPracticeID = '" + this.studentPracticeID + "'," +
-                    "languageCode = '" + this.languageCode + "'" +
+                    "languageCode = '" + this.languageId + "'" +
                     " WHERE " +
-                    "userID = '" + this.userID + "';";
+                    "userID = '" + this.studentId + "';";
             this.db.update(query);
         }else{
             System.out.println("Unable to update user student, the user has to be inserted into db first...");
@@ -57,7 +57,7 @@ public class UserStudent {
 
     public void delete(){
         if(this.added){
-            String query = "DELETE FROM userStudent WHERE userId = '" + this.userID + "';";
+            String query = "DELETE FROM userStudent WHERE userId = '" + this.studentId + "';";
             this.db.update(query);
             this.added = false;
         }else{
@@ -70,18 +70,18 @@ public class UserStudent {
             String query = "INSERT INTO userStudent " +
                     "('username', 'password', 'studentLevel', 'studentLanguages', 'studentPracticeID', 'languageCode')" +
                     " VALUES (" +
-                    "'" + this.username + "'," +
-                    "'" + this.password + "'," +
+                    "'" + this.studentUsername + "'," +
+                    "'" + this.studentPassword + "'," +
                     "'" + this.studentLevel + "'," +
                     "'" + this.studentLanguages + "'," +
                     "'" + this.studentPracticeID + "'," +
-                    "'" + this.languageCode + "'" +
+                    "'" + this.languageId + "'" +
                     ");";
             this.db.update(query);
             this.added = true;
             ResultSet set = this.db.query("SELECT * from userStudent order by userID DESC LIMIT 1;");
             try {
-                this.userID = set.getInt("userID");
+                this.studentId = set.getInt("userID");
             } catch (SQLException e) {
                 System.out.println("Unable to get the id of the inserted user");
                 throw new RuntimeException(e);
@@ -93,36 +93,37 @@ public class UserStudent {
     /*
      GETTERS AND SETTERS
      */
-    public int getUserId() {
-        return userID;
+
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setUserId(int userId) {
-        this.userID = userId;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getStudentUsername() {
+        return studentUsername;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setStudentUsername(String studentUsername) {
+        this.studentUsername = studentUsername;
     }
 
-    public String getPassword() {
-        return password;
+    public String getStudentPassword() {
+        return studentPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setStudentPassword(String studentPassword) {
+        this.studentPassword = studentPassword;
     }
 
     public String getStudentLevel() {
         return studentLevel;
     }
 
-    public void setStudentLevel(String userLevel) {
-        this.studentLevel = userLevel;
+    public void setStudentLevel(String studentLevel) {
+        this.studentLevel = studentLevel;
     }
 
     public String getStudentLanguages() {
@@ -141,11 +142,11 @@ public class UserStudent {
         this.studentPracticeID = studentPracticeID;
     }
 
-    public int getLanguageCode() {
-        return languageCode;
+    public int getLanguageId() {
+        return languageId;
     }
 
-    public void setLanguageCode(int languageCode) {
-        this.languageCode = languageCode;
+    public void setLanguageId(int languageId) {
+        this.languageId = languageId;
     }
 }

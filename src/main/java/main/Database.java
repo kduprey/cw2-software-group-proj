@@ -1,7 +1,7 @@
 package main;
 
-import main.dataclasses.UserAdmin;
-import main.dataclasses.UserStudent;
+import main.dataclasses.Admin;
+import main.dataclasses.Student;
 
 import java.sql.*;
 

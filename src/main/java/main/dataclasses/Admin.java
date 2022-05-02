@@ -9,25 +9,26 @@ import java.sql.SQLException;
  *
  * @author Anastasiia Mazur
  */
-public class UserAdmin {
+public class Admin {
 
-    private int userID;
-    private String username;
-    private String password;
+    private int adminId;
     private String adminType;
-    private int languageCode;
+    private String adminUsername;
+    private String adminPassword;
+
+    private int languageId;
     private Database db;
     private boolean added;
 
-    public UserAdmin(Database db,
-                     String username,
-                     String password,
+    public Admin(Database db,
+                     String adminUsername,
+                     String adminPassword,
                      String adminType,
-                     int languageCode){
-        this.username = username;
-        this.password = password;
+                     int languageId){
+        this.adminUsername = adminUsername;
+        this.adminPassword = adminPassword;
         this.adminType = adminType;
-        this.languageCode = languageCode;
+        this.languageId = languageId;
         this.db = db;
         this.added = false;
     }
@@ -35,12 +36,12 @@ public class UserAdmin {
     public void update(){
         if(this.added) {
             String query = "UPDATE userAdmin SET " +
-                    "username = '" + this.username + "'," +
-                    "password = '" + this.password + "'," +
+                    "username = '" + this.adminUsername + "'," +
+                    "password = '" + this.adminPassword + "'," +
                     "adminType = '" + this.adminType + "'," +
-                    "languageCode = '" + this.languageCode + "'" +
+                    "languageCode = '" + this.languageId + "'" +
                     " WHERE " +
-                    "userID = '" + this.userID + "';";
+                    "userID = '" + this.adminId + "';";
             this.db.update(query);
         }else{
             System.out.println("Unable to update user student, the object has to be added to database first...");
@@ -49,7 +50,7 @@ public class UserAdmin {
 
     public void delete(){
         if(this.added) {
-            String query = "DELETE FROM userAdmin WHERE userID = '" + this.userID + "';";
+            String query = "DELETE FROM userAdmin WHERE userID = '" + this.adminId + "';";
             this.db.update(query);
             this.added = false;
         }else{
@@ -62,15 +63,15 @@ public class UserAdmin {
             String query = "INSERT INTO userAdmin " +
                     "('username', 'password', 'adminType', 'languageCode')" +
                     " VALUES (" +
-                    "'" + this.username + "'," +
-                    "'" + this.password + "'," +
+                    "'" + this.adminUsername + "'," +
+                    "'" + this.adminPassword + "'," +
                     "'" + this.adminType + "'," +
-                    "'" + this.languageCode + "'" +
+                    "'" + this.languageId + "'" +
                     ");";
             this.db.update(query);
             ResultSet set = this.db.query("SELECT * from userAdmin order by userID DESC LIMIT 1;");
             try {
-                this.userID = set.getInt("userID");
+                this.adminId = set.getInt("userID");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -80,28 +81,12 @@ public class UserAdmin {
         }
     }
 
-    public int getUserID() {
-        return userID;
+    public int getAdminId() {
+        return adminId;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
     }
 
     public String getAdminType() {
@@ -112,11 +97,27 @@ public class UserAdmin {
         this.adminType = adminType;
     }
 
-    public int getLanguageCode() {
-        return languageCode;
+    public String getAdminUsername() {
+        return adminUsername;
     }
 
-    public void setLanguageCode(int languageCode) {
-        this.languageCode = languageCode;
+    public void setAdminUsername(String adminUsername) {
+        this.adminUsername = adminUsername;
+    }
+
+    public String getAdminPassword() {
+        return adminPassword;
+    }
+
+    public void setAdminPassword(String adminPassword) {
+        this.adminPassword = adminPassword;
+    }
+
+    public int getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(int languageId) {
+        this.languageId = languageId;
     }
 }
