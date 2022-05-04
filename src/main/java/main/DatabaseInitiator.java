@@ -19,7 +19,7 @@ import java.util.Arrays;
  */
 public class DatabaseInitiator {
 
-    public static void initDialogues(Database db){
+    public static void initData(Database db){
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         InputStream is = classloader.getResourceAsStream("dialogues.csv");
         InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);

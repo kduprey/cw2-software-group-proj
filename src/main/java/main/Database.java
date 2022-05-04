@@ -3,6 +3,7 @@ package main;
 import main.dataclasses.Admin;
 import main.dataclasses.Student;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 
 /**
@@ -12,6 +13,10 @@ import java.sql.*;
 public class Database {
     private String db_url;
     private Connection connection;
+
+    public Database(){
+        this("/Users/anastasiiamazur/IdeaProjects/cw2-software-group-proj/softTechDB.db");
+    }
 
     public Database(String dbpath){
         this.db_url = "jdbc:sqlite:" + dbpath;
