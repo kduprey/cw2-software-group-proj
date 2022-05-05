@@ -3,6 +3,8 @@ package main.gui;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -14,16 +16,26 @@ public class BasePanel extends JPanel {
     private JPanel mainPanel;
     private JPanel footerPanel;
 
+    private ScreenSwitch screenSwitch;
+
     private BufferedImage france, spain, germany;
     private JLabel franceLabel, spainLabel, germanyLabel;
+    private JButton mainMenuButton;
 
-    public BasePanel(){
+    public BasePanel(ScreenSwitch screenSwitch){
         super();
         this.setLayout(new BorderLayout());
 
+        this.screenSwitch = screenSwitch;
         headerPanel = new JPanel();
         mainPanel = new JPanel();
         footerPanel = new JPanel();
+
+        mainMenuButton = new JButton("Back to Main");
+
+        mainMenuButton.addActionListener(new BackToMain(screenSwitch));
+
+        this.screenSwitch.add(mainPanel);
 
         try {
             france = ImageIO.read(new File(resourcePath + "france.png"));
@@ -49,9 +61,11 @@ public class BasePanel extends JPanel {
         headerPanel.add(spainLabel);
         headerPanel.add(franceLabel);
 
-        this.add(headerPanel, BorderLayout.NORTH);
-        this.add(mainPanel, BorderLayout.CENTER);
-        this.add(footerPanel, BorderLayout.SOUTH);
+        footerPanel.add(mainMenuButton);
+
+        this.add(this.headerPanel, BorderLayout.NORTH);
+        this.add(this.mainPanel, BorderLayout.CENTER);
+        this.add(this.footerPanel, BorderLayout.SOUTH);
 
 
     }
@@ -88,5 +102,27 @@ public class BasePanel extends JPanel {
 
     public void setFooterPanel(JPanel footerPanel) {
         this.footerPanel = footerPanel;
+    }
+
+    public ScreenSwitch getScreenSwitch() {
+        return screenSwitch;
+    }
+
+    public void setScreenSwitch(ScreenSwitch screenSwitch) {
+        this.screenSwitch = screenSwitch;
+    }
+}
+
+class BackToMain implements ActionListener {
+
+    private ScreenSwitch screenSwitch;
+
+    public BackToMain(ScreenSwitch screenSwitch){
+        this.screenSwitch = screenSwitch;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        this.screenSwitch.show("main");
     }
 }

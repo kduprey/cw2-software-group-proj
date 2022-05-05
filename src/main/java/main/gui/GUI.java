@@ -1,6 +1,7 @@
 package main.gui;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GUI extends JFrame {
 
@@ -15,9 +16,19 @@ public class GUI extends JFrame {
         this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-//        BasePanel panel = new BasePanel();
-        Signup panel = new Signup();
-        this.add(panel);
+        ScreenSwitch screenSwitch = new ScreenSwitch();
+
+        MainPage main = new MainPage(screenSwitch);
+        Signup signup = new Signup(screenSwitch);
+        Login login = new Login(screenSwitch);
+
+        screenSwitch.add(signup, "signup");
+        screenSwitch.add(login, "login");
+        screenSwitch.add(main, "main");
+
+        screenSwitch.show("main");
+
+        this.add(screenSwitch);
 
         this.setVisible(true);
     }

@@ -27,7 +27,7 @@ public class Student {
                    String studentLevel,
                    String studentLanguages,
                    int studentPracticeId,
-                   int languageId){
+                   int languageId) {
         this.db = db;
         this.studentUsername = studentUsername;
         this.studentPassword = studentPassword;
@@ -36,6 +36,16 @@ public class Student {
         this.studentPracticeId = studentPracticeId;
         this.languageId = languageId;
         this.added = false;
+    }
+
+    public static boolean loginCheck(Database db, String username, String password){
+        String query = "select * from student where studentUsername='"+username+"' and studentPassword='"+password+"';";
+        ResultSet result = db.query(query);
+        try {
+            return result.next();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void update(){
