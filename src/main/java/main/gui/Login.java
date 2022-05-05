@@ -19,7 +19,7 @@ public class Login extends BasePanel implements ActionListener {
     private ArrayList<JTextComponent> fields;
 
     public Login(ScreenSwitch screenSwitch){
-        super(screenSwitch);
+        super(screenSwitch, "main");
         fields = new ArrayList<>();
         title = new JLabel("Login into your account!", SwingConstants.CENTER);
 
@@ -79,6 +79,8 @@ public class Login extends BasePanel implements ActionListener {
             boolean check = Student.loginCheck(db, emailField.getText(), passwordField.getText());
             if(!check){
                 helpMessage.setText("The username or password is incorrect");
+            }else{
+                this.getScreenSwitch().show("menu");
             }
         }
     }

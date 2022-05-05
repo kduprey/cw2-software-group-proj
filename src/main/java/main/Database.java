@@ -53,6 +53,11 @@ public class Database {
             System.out.println("Failed to execute sql query...");
             throw new RuntimeException(e);
         }
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return set;
     }
 
@@ -71,6 +76,10 @@ public class Database {
             System.out.println("Failed to execute sql query...");
             throw new RuntimeException(e);
         }
-
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

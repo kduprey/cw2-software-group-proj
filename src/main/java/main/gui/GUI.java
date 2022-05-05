@@ -21,10 +21,14 @@ public class GUI extends JFrame {
         MainPage main = new MainPage(screenSwitch);
         Signup signup = new Signup(screenSwitch);
         Login login = new Login(screenSwitch);
+        MainMenu menu = new MainMenu(screenSwitch);
+        StudentTeacherSessions studentTeacherSessions = new StudentTeacherSessions(screenSwitch);
 
         screenSwitch.add(signup, "signup");
         screenSwitch.add(login, "login");
         screenSwitch.add(main, "main");
+        screenSwitch.add(menu, "menu");
+        screenSwitch.add(studentTeacherSessions, "studentTeacherSessions");
 
         screenSwitch.show("main");
 

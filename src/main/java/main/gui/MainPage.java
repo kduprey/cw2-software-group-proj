@@ -12,7 +12,7 @@ public class MainPage extends BasePanel {
     private JButton login, signup;
     
     public MainPage(ScreenSwitch screenSwitch){
-        super(screenSwitch);
+        super(screenSwitch, "main");
         this.screenSwitch = screenSwitch;
 
         title = new JLabel("Create an account here!", SwingConstants.CENTER);

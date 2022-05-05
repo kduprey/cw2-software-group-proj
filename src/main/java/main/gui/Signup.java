@@ -19,7 +19,7 @@ public class Signup extends BasePanel implements ActionListener{
     private ArrayList<JTextComponent> fields;
 
     public Signup(ScreenSwitch screenSwitch){
-        super(screenSwitch);
+        super(screenSwitch, "main");
         fields = new ArrayList<>();
         title = new JLabel("Create an account here!", SwingConstants.CENTER);
 

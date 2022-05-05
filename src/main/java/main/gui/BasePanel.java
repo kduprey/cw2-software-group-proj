@@ -21,19 +21,22 @@ public class BasePanel extends JPanel {
     private BufferedImage france, spain, germany;
     private JLabel franceLabel, spainLabel, germanyLabel;
     private JButton mainMenuButton;
+    private String backButtonLocation;
 
-    public BasePanel(ScreenSwitch screenSwitch){
+    public BasePanel(ScreenSwitch screenSwitch, String backButtonLocation){
         super();
         this.setLayout(new BorderLayout());
 
         this.screenSwitch = screenSwitch;
+        this.backButtonLocation = backButtonLocation;
+
         headerPanel = new JPanel();
         mainPanel = new JPanel();
         footerPanel = new JPanel();
 
         mainMenuButton = new JButton("Back to Main");
 
-        mainMenuButton.addActionListener(new BackToMain(screenSwitch));
+        mainMenuButton.addActionListener(new BackToMain(screenSwitch, backButtonLocation));
 
         this.screenSwitch.add(mainPanel);
 
@@ -116,13 +119,15 @@ public class BasePanel extends JPanel {
 class BackToMain implements ActionListener {
 
     private ScreenSwitch screenSwitch;
+    private String backButtonLocation;
 
-    public BackToMain(ScreenSwitch screenSwitch){
+    public BackToMain(ScreenSwitch screenSwitch, String backButtonLocation){
         this.screenSwitch = screenSwitch;
+        this.backButtonLocation = backButtonLocation;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.screenSwitch.show("main");
+        this.screenSwitch.show(backButtonLocation);
     }
 }
