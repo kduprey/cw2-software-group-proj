@@ -80,6 +80,9 @@ public class Login extends BasePanel implements ActionListener {
             if(!check){
                 helpMessage.setText("The username or password is incorrect");
             }else{
+                for(JTextComponent field: fields){
+                    field.setText("");
+                }
                 this.getScreenSwitch().show("menu");
             }
         }

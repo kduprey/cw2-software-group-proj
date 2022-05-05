@@ -4,6 +4,8 @@ package main.dataclasses;
 import main.Database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -40,12 +42,8 @@ public class Student {
 
     public static boolean loginCheck(Database db, String username, String password){
         String query = "select * from student where studentUsername='"+username+"' and studentPassword='"+password+"';";
-        ResultSet result = db.query(query);
-        try {
-            return result.next();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        ArrayList result = db.query(query);
+        return result.size() > 0;
     }
 
     public void update(){
@@ -89,13 +87,8 @@ public class Student {
                     ");";
             this.db.update(query);
             this.added = true;
-            ResultSet set = this.db.query("SELECT * from Student order by studentId DESC LIMIT 1;");
-            try {
-                this.studentId = set.getInt("studentId");
-            } catch (SQLException e) {
-                System.out.println("Unable to get the id of the inserted user");
-                throw new RuntimeException(e);
-            }
+            ArrayList<HashMap<String, String>> list = this.db.query("SELECT * from Student order by studentId DESC LIMIT 1;");
+            this.studentId = Integer.parseInt(list.get(0).get("studentId"));
         }else{
             System.out.println("Unable to insert Student, the user is already in the db...");
         }

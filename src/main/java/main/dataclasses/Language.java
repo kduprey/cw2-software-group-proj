@@ -4,6 +4,8 @@ import main.Database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -58,12 +60,8 @@ public class Language {
                     "'" + this.languageLevel + "'" +
                     ");";
             this.db.update(query);
-            ResultSet set = this.db.query("SELECT * from Language order by languageId DESC LIMIT 1;");
-            try {
-                this.languageId = set.getInt("languageId");
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            ArrayList<HashMap<String, String>> list = this.db.query("SELECT * from Language order by languageId DESC LIMIT 1;");
+            this.languageId = Integer.parseInt(list.get(0).get("languageId"));
             this.added = true;
         }else{
             System.out.println("Unable to insert Language, the object is already in the database...");

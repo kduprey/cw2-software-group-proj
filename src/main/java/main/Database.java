@@ -5,6 +5,8 @@ import main.dataclasses.Student;
 
 import javax.xml.crypto.Data;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -38,7 +40,13 @@ public class Database {
         return this.connection;
     }
     
-    public ResultSet query(String query){
+    public ArrayList query(String query){
+        try {
+            connection = DriverManager.getConnection(this.db_url);
+        } catch (SQLException e) {
+            System.out.println("Not able to connect to db...");
+            throw new RuntimeException(e);
+        }
         Statement statement;
         try {
             statement = connection.createStatement();
@@ -53,15 +61,38 @@ public class Database {
             System.out.println("Failed to execute sql query...");
             throw new RuntimeException(e);
         }
+        ResultSetMetaData md = null;
+        HashMap row = null;
+        ArrayList list = new ArrayList();
+        try {
+            md = set.getMetaData();
+            int columns = md.getColumnCount();
+            while (set.next()){
+                row = new HashMap(columns);
+                for(int i=1; i<=columns; ++i){
+                    row.put(md.getColumnName(i),set.getObject(i)+"");
+                }
+                list.add(row);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         try {
             connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return set;
+        return list;
     }
 
     public void update(String query){
+        try {
+            connection = DriverManager.getConnection(this.db_url);
+        } catch (SQLException e) {
+            System.out.println("Not able to connect to db...");
+            throw new RuntimeException(e);
+        }
         Statement statement;
         try {
             statement = connection.createStatement();

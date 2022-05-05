@@ -4,6 +4,8 @@ import main.Database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -78,12 +80,8 @@ public class Dialogue {
                     "'" + this.dialogueLevel + "'" +
                     ");";
             this.db.update(query);
-            ResultSet set = this.db.query("SELECT * from Dialogue order by dialogueId DESC LIMIT 1;");
-            try {
-                this.dialogueId = set.getInt("dialogueId");
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            ArrayList<HashMap<String, String>> list = this.db.query("SELECT * from Dialogue order by dialogueId DESC LIMIT 1");
+            this.dialogueId = Integer.parseInt(list.get(0).get("dialogueId"));
             this.added = true;
         }else{
             System.out.println("Unable to insert Dialogue, the object is already in the database...");

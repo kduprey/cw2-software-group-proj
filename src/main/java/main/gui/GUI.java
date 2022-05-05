@@ -1,5 +1,8 @@
 package main.gui;
 
+import main.Database;
+import main.DatabaseInitiator;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,6 +16,10 @@ public class GUI extends JFrame {
     }
 
     public GUI(){
+        Database db = new Database();
+        DatabaseInitiator.dropTables(db.getConnection());
+        DatabaseInitiator.baseInit(db.getConnection());
+
         this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
