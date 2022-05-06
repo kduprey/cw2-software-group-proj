@@ -12,9 +12,10 @@ import java.util.ArrayList;
 
 public class Signup extends BasePanel implements ActionListener{
 
-    private JLabel title, emailLabel, usernameLabel, nameLabel, surnameLabel, passwordLabel, helpMessage;
+    private JLabel title, emailLabel, usernameLabel, nameLabel, surnameLabel, passwordLabel, helpMessage, userTypeLabel;
     private JTextField emailField, usernameField, nameField, surnameField;
     private JPasswordField passwordField;
+    private JComboBox<String> userTypeField;
     private JButton signUp;
     private ArrayList<JTextComponent> fields;
 
@@ -22,12 +23,14 @@ public class Signup extends BasePanel implements ActionListener{
         super(screenSwitch, "main");
         fields = new ArrayList<>();
         title = new JLabel("Create an account here!", SwingConstants.CENTER);
+        String[] userOptions = {"Teacher", "Student"};
 
         emailLabel = new JLabel("Email", SwingConstants.CENTER);
         usernameLabel = new JLabel("Username", SwingConstants.CENTER);
         nameLabel = new JLabel("Name", SwingConstants.CENTER);
         surnameLabel = new JLabel("Surname", SwingConstants.CENTER);
         passwordLabel = new JLabel("Password", SwingConstants.CENTER);
+        userTypeLabel = new JLabel("User Type", SwingConstants.CENTER);
         helpMessage = new JLabel("", SwingConstants.CENTER);
 
         emailField = new JTextField();
@@ -35,6 +38,8 @@ public class Signup extends BasePanel implements ActionListener{
         nameField = new JTextField();
         surnameField = new JTextField();
         passwordField = new JPasswordField();
+        userTypeField = new JComboBox<>(userOptions);
+        userTypeField.setBounds(80, 50, 140, 20);
 
         fields.add(emailField);
         fields.add(usernameField);
@@ -53,7 +58,7 @@ public class Signup extends BasePanel implements ActionListener{
 
         helpMessage.setForeground(new Color(255, 0, 0));
 
-        this.getMainPanel().setLayout(new GridLayout(18, 1));
+        this.getMainPanel().setLayout(new GridLayout(21, 1));
 
         this.getMainPanel().add(title);
         this.getMainPanel().add(emailLabel);
@@ -66,6 +71,8 @@ public class Signup extends BasePanel implements ActionListener{
         this.getMainPanel().add(surnameField);
         this.getMainPanel().add(passwordLabel);
         this.getMainPanel().add(passwordField);
+        this.getMainPanel().add(userTypeLabel);
+        this.getMainPanel().add(userTypeField);
         this.getMainPanel().add(signUp);
         this.getMainPanel().add(helpMessage);
         for(int i = 0; i < 5; i++){
