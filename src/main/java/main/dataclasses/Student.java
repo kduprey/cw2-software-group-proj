@@ -15,6 +15,10 @@ public class Student {
 
     private int studentId;
     private String studentUsername;
+
+    private String studentName;
+
+    private String studentSurname;
     private String studentPassword;
     private String studentLevel;
     private String studentLanguages;
@@ -25,6 +29,8 @@ public class Student {
 
     public Student(Database db,
                    String studentUsername,
+                   String studentName,
+                   String studentSurname,
                    String studentPassword,
                    String studentLevel,
                    String studentLanguages,
@@ -32,6 +38,8 @@ public class Student {
                    int languageId) {
         this.db = db;
         this.studentUsername = studentUsername;
+        this.studentName = studentName;
+        this.studentSurname = studentSurname;
         this.studentPassword = studentPassword;
         this.studentLevel = studentLevel;
         this.studentLanguages = studentLanguages;
@@ -50,6 +58,8 @@ public class Student {
         if(this.added) {
             String query = "UPDATE Student SET " +
                     "studentUsername = '" + this.studentUsername + "'," +
+                    "studentName = '" + this.studentName + "'," +
+                    "studentSurname = '" + this.studentSurname + "'," +
                     "studentPassword = '" + this.studentPassword + "'," +
                     "studentLevel = '" + this.studentLevel + "'," +
                     "studentLanguages = '" + this.studentLanguages + "'," +
@@ -76,9 +86,12 @@ public class Student {
     public void insert(){
         if(!this.added) {
             String query = "INSERT INTO Student " +
-                    "('studentUsername', 'studentPassword', 'studentLevel', 'studentLanguages', 'studentPracticeId', 'languageId')" +
+                    "('studentUsername', 'studentName', 'studentSurname', 'studentPassword', 'studentLevel', 'studentLanguages', 'studentPracticeId', 'languageId')" +
+                    //"('studentUsername', 'studentPassword', 'studentLevel', 'studentLanguages', 'studentPracticeId', 'languageId')" +
                     " VALUES (" +
                     "'" + this.studentUsername + "'," +
+                    "'" + this.studentName + "'," +
+                    "'" + this.studentSurname + "'," +
                     "'" + this.studentPassword + "'," +
                     "'" + this.studentLevel + "'," +
                     "'" + this.studentLanguages + "'," +

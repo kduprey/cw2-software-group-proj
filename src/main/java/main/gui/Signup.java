@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 public class Signup extends BasePanel implements ActionListener{
 
-    private JLabel title, emailLabel, nameLabel, surnameLabel, passwordLabel, helpMessage;
-    private JTextField emailField, nameField, surnameField;
+    private JLabel title, emailLabel, usernameLabel, nameLabel, surnameLabel, passwordLabel, helpMessage;
+    private JTextField emailField, usernameField, nameField, surnameField;
     private JPasswordField passwordField;
     private JButton signUp;
     private ArrayList<JTextComponent> fields;
@@ -24,17 +24,20 @@ public class Signup extends BasePanel implements ActionListener{
         title = new JLabel("Create an account here!", SwingConstants.CENTER);
 
         emailLabel = new JLabel("Email", SwingConstants.CENTER);
+        usernameLabel = new JLabel("Username", SwingConstants.CENTER);
         nameLabel = new JLabel("Name", SwingConstants.CENTER);
         surnameLabel = new JLabel("Surname", SwingConstants.CENTER);
         passwordLabel = new JLabel("Password", SwingConstants.CENTER);
         helpMessage = new JLabel("", SwingConstants.CENTER);
 
         emailField = new JTextField();
+        usernameField = new JTextField();
         nameField = new JTextField();
         surnameField = new JTextField();
         passwordField = new JPasswordField();
 
         fields.add(emailField);
+        fields.add(usernameField);
         fields.add(nameField);
         fields.add(surnameField);
         fields.add(passwordField);
@@ -50,11 +53,13 @@ public class Signup extends BasePanel implements ActionListener{
 
         helpMessage.setForeground(new Color(255, 0, 0));
 
-        this.getMainPanel().setLayout(new GridLayout(16, 1));
+        this.getMainPanel().setLayout(new GridLayout(18, 1));
 
         this.getMainPanel().add(title);
         this.getMainPanel().add(emailLabel);
         this.getMainPanel().add(emailField);
+        this.getMainPanel().add(usernameLabel);
+        this.getMainPanel().add(usernameField);
         this.getMainPanel().add(nameLabel);
         this.getMainPanel().add(nameField);
         this.getMainPanel().add(surnameLabel);
@@ -82,7 +87,8 @@ public class Signup extends BasePanel implements ActionListener{
         if(!error) {
             helpMessage.setText("");
             Database db = new Database();
-            Student student = new Student(db, emailField.getText(), passwordField.getText(), "", "", -1, -1);
+//            Student student = new Student(db, emailField.getText(), usernameField.getText(), passwordField.getText(), "", "", -1, -1);
+            Student student = new Student(db, usernameField.getText(), nameField.getText(), surnameField.getText(), passwordField.getText(), "level", "lang", -1, -1);
             student.insert();
             for(JTextComponent component: fields){
                 component.setText("");

@@ -17,7 +17,7 @@ public class GUI extends JFrame {
 
     public GUI(){
         Database db = new Database();
-        DatabaseInitiator.dropTables(db.getConnection());
+//        DatabaseInitiator.dropTables(db.getConnection());
         DatabaseInitiator.baseInit(db.getConnection());
 
         this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);

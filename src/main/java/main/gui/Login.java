@@ -23,7 +23,7 @@ public class Login extends BasePanel implements ActionListener {
         fields = new ArrayList<>();
         title = new JLabel("Login into your account!", SwingConstants.CENTER);
 
-        emailLabel = new JLabel("Email", SwingConstants.CENTER);
+        emailLabel = new JLabel("Username", SwingConstants.CENTER);
         passwordLabel = new JLabel("Password", SwingConstants.CENTER);
         helpMessage = new JLabel("", SwingConstants.CENTER);
 

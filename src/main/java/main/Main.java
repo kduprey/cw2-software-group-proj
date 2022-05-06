@@ -9,7 +9,7 @@ public class Main {
     public static void main(String args[]){
         String dbpath = "/Users/anastasiiamazur/IdeaProjects/cw2-software-group-proj/softTechDB.db";
         Database db = new Database(dbpath);
-        DatabaseInitiator.dropTables(db.getConnection());
+  //      DatabaseInitiator.dropTables(db.getConnection());
         DatabaseInitiator.baseInit(db.getConnection());
         DatabaseInitiator.initData(db);
 

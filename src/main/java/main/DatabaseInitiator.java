@@ -80,6 +80,8 @@ public class DatabaseInitiator {
         queries.add("CREATE TABLE IF NOT EXISTS Student ("
                 + "studentId INTEGER PRIMARY KEY,"
                 + "studentUsername VARCHAR(30),"
+                + "studentName VARCHAR(30),"
+                + "studentSurname VARCHAR(30),"
                 + "studentPassword VARCHAR(30),"
                 + "studentLevel VARCHAR(2),"
                 + "studentLanguages VARCHAR(100),"
