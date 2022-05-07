@@ -2,8 +2,11 @@ package main.dataclasses;
 
 import main.Database;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -74,6 +77,21 @@ public class Practice {
         }else{
             System.out.println("Unable to insert Practice, the object is already in the database...");
         }
+    }
+
+    public static ArrayList<Practice> getByStudentId(Database db, String studentId){
+        ArrayList<Practice> practices = new ArrayList<>();
+        String query = "SELECT * FROM Practice WHERE studentId = " + studentId + ";";
+        ArrayList<HashMap<String, String>> set = db.query(query);
+        for(HashMap<String, String> row: set){
+            practices.add(new Practice(db,
+                    Integer.parseInt(row.get("teacherID")),
+                    Integer.parseInt(row.get("dialogueId")),
+                    Integer.parseInt(row.get("studentId")),
+                    row.get("practiceDateTime"))
+            );
+        }
+        return practices;
     }
 
     /*

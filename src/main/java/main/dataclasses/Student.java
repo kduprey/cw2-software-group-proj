@@ -54,6 +54,12 @@ public class Student {
         return result.size() > 0;
     }
 
+    public static String getId(Database db, String username, String password){
+        String query = "select * from student where studentUsername='"+username+"' and studentPassword='"+password+"';";
+        ArrayList<HashMap<String, String>> result = db.query(query);
+        return result.get(0).get("studentId");
+    }
+
     public void update(){
         if(this.added) {
             String query = "UPDATE Student SET " +

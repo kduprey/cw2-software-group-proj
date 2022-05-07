@@ -1,5 +1,6 @@
 package main.gui;
 
+import com.sun.prism.shape.ShapeRep;
 import main.Database;
 import main.dataclasses.Student;
 
@@ -76,13 +77,17 @@ public class Login extends BasePanel implements ActionListener {
         if(!error) {
             helpMessage.setText("");
             Database db = new Database();
-            boolean check = Student.loginCheck(db, emailField.getText(), passwordField.getText());
+            String email = emailField.getText();
+            String password = passwordField.getText();
+            boolean check = Student.loginCheck(db, email, password);
             if(!check){
                 helpMessage.setText("The username or password is incorrect");
             }else{
                 for(JTextComponent field: fields){
                     field.setText("");
                 }
+                this.getScreenSwitch().setUserId(Student.getId(db, email, password));
+                ((StudentTeacherSessions) this.getScreenSwitch().getCards().get("studentTeacherSessions")).draw();
                 this.getScreenSwitch().show("menu");
             }
         }
