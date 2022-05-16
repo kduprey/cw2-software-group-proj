@@ -11,7 +11,7 @@ public class GUI extends JFrame {
     private final int WINDOW_WIDTH = 400;
     private final int WINDOW_HEIGHT = 700;
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         new GUI();
     }
 
@@ -22,6 +22,8 @@ public class GUI extends JFrame {
 
         this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        this.setName("SoftTech Application");
 
         ScreenSwitch screenSwitch = new ScreenSwitch();
 

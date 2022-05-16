@@ -6,8 +6,8 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String args[]){
-        String dbpath = "/Users/anastasiiamazur/IdeaProjects/cw2-software-group-proj/softTechDB.db";
+    public static void main(String[] args){
+        String dbpath = "/Users/kentonduprey/Desktop/cw2-software-group-proj/softTechDB.db";
         Database db = new Database(dbpath);
   //      DatabaseInitiator.dropTables(db.getConnection());
         DatabaseInitiator.baseInit(db.getConnection());

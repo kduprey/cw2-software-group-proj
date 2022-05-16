@@ -17,7 +17,7 @@ public class Database {
     private Connection connection;
 
     public Database(){
-        this("/Users/anastasiiamazur/IdeaProjects/cw2-software-group-proj/softTechDB.db");
+        this("/Users/kentonduprey/Desktop/cw2-software-group-proj/softTechDB.db");
     }
 
     public Database(String dbpath){

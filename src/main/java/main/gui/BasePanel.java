@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class BasePanel extends JPanel {
 
-    private final String resourcePath = "/Users/anastasiiamazur/IdeaProjects/cw2-software-group-proj/src/main/resources/";
+    private final String resourcePath = "/Users/kentonduprey/Desktop/cw2-software-group-proj/src/main/resources/";
     private JPanel headerPanel;
     private JPanel mainPanel;
     private JPanel footerPanel;
