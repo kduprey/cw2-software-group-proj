@@ -4,6 +4,7 @@ import main.dataclasses.Admin;
 import main.dataclasses.Student;
 
 import javax.xml.crypto.Data;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +18,7 @@ public class Database {
     private Connection connection;
 
     public Database(){
-        this("/Users/kentonduprey/Desktop/cw2-software-group-proj/softTechDB.db");
+        this(Paths.get("softTechDB.db").toAbsolutePath().toString());
     }
 
     public Database(String dbpath){

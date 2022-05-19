@@ -12,19 +12,31 @@ public class Teacher {
     private int teacherId;
     private String teacherUsername;
     private String teacherPassword;
-    private String teacherLanguage;
+    private Integer teacherLanguage;
     private Database db;
     private boolean added;
 
     public Teacher(Database db,
                    String teacherUsername,
                    String teacherPassword,
-                   String teacherLanguage){
+                   Integer teacherLanguage){
         this.teacherUsername = teacherUsername;
         this.teacherPassword = teacherPassword;
         this.teacherLanguage = teacherLanguage;
         this.db = db;
         this.added = false;
+    }
+
+    public static boolean loginCheck(Database db, String username, String password){
+        String query = "select * from teacher where teacherUsername='"+username+"' and teacherPassword='"+password+"';";
+        ArrayList result = db.query(query);
+        return result.size() > 0;
+    }
+
+    public static String getId(Database db, String username, String password){
+        String query = "select * from teacher where teacherUsername='"+username+"' and teacherPassword='"+password+"';";
+        ArrayList<HashMap<String, String>> result = db.query(query);
+        return result.get(0).get("teacherId");
     }
 
     public void update(){
@@ -97,11 +109,11 @@ public class Teacher {
         this.teacherPassword = teacherPassword;
     }
 
-    public String getTeacherLanguage() {
+    public Integer getTeacherLanguage() {
         return teacherLanguage;
     }
 
-    public void setTeacherLanguage(String teacherLanguage) {
+    public void setTeacherLanguage(Integer teacherLanguage) {
         this.teacherLanguage = teacherLanguage;
     }
 }

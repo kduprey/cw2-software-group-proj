@@ -2,6 +2,7 @@ package main.gui;
 
 import main.Database;
 import main.dataclasses.Student;
+import main.dataclasses.Teacher;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class Login extends BasePanel implements ActionListener {
 
     private JLabel title, emailLabel, passwordLabel, helpMessage;
-    private JTextField emailField;
+    private JTextField usernameField;
     private JPasswordField passwordField;
     private JButton login;
     private ArrayList<JTextComponent> fields;
@@ -27,10 +28,10 @@ public class Login extends BasePanel implements ActionListener {
         passwordLabel = new JLabel("Password", SwingConstants.CENTER);
         helpMessage = new JLabel("", SwingConstants.CENTER);
 
-        emailField = new JTextField();
+        usernameField = new JTextField();
         passwordField = new JPasswordField();
 
-        fields.add(emailField);
+        fields.add(usernameField);
         fields.add(passwordField);
 
         login = new JButton("Login");
@@ -51,7 +52,7 @@ public class Login extends BasePanel implements ActionListener {
         }
         this.getMainPanel().add(title);
         this.getMainPanel().add(emailLabel);
-        this.getMainPanel().add(emailField);
+        this.getMainPanel().add(usernameField);
         this.getMainPanel().add(passwordLabel);
         this.getMainPanel().add(passwordField);
         this.getMainPanel().add(login);
@@ -76,17 +77,29 @@ public class Login extends BasePanel implements ActionListener {
         if(!error) {
             helpMessage.setText("");
             Database db = new Database();
-            String email = emailField.getText();
-            String password = passwordField.getText();
-            boolean check = Student.loginCheck(db, email, password);
-            if(!check){
+            String username = usernameField.getText();
+//          For security purposes this should not be passed directly as a string.
+//          This should be salted and hashed prior to being sent to the DB
+//          - Kenton Duprey
+            String password = String.valueOf(passwordField.getPassword());
+            boolean checkStudent = Student.loginCheck(db, username, password);
+
+            boolean checkTeacher = Teacher.loginCheck(db, username, password);
+            if(!checkStudent && !checkTeacher){
                 helpMessage.setText("The username or password is incorrect");
             }else{
                 for(JTextComponent field: fields){
                     field.setText("");
                 }
-                this.getScreenSwitch().setUserId(Student.getId(db, email, password));
+                if (checkStudent) {
+                    this.getScreenSwitch().setUserId(Student.getId(db, username, password));
+                    this.getScreenSwitch().setUserType("Student");
+                } else {
+                    this.getScreenSwitch().setUserId(Teacher.getId(db, username, password));
+                    this.getScreenSwitch().setUserType("Teacher");
+                }
                 ((StudentTeacherSessions) this.getScreenSwitch().getCards().get("studentTeacherSessions")).draw();
+                ((AdministratorUserData) this.getScreenSwitch().getCards().get("administratorUserData")).draw();
                 this.getScreenSwitch().show("menu");
             }
         }

@@ -2,6 +2,7 @@ package main.gui;
 
 import main.Database;
 import main.dataclasses.Student;
+import main.dataclasses.Teacher;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
@@ -9,11 +10,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Signup extends BasePanel implements ActionListener{
 
-    private JLabel title, emailLabel, usernameLabel, nameLabel, surnameLabel, passwordLabel, helpMessage, userTypeLabel;
-    private JTextField emailField, usernameField, nameField, surnameField;
+    private JLabel title, usernameLabel, nameLabel, surnameLabel, passwordLabel, helpMessage, userTypeLabel;
+    private JTextField usernameField, nameField, surnameField;
     private JPasswordField passwordField;
     private JComboBox<String> userTypeField;
     private JButton signUp;
@@ -25,7 +27,6 @@ public class Signup extends BasePanel implements ActionListener{
         title = new JLabel("Create an account here!", SwingConstants.CENTER);
         String[] userOptions = {"Teacher", "Student"};
 
-        emailLabel = new JLabel("Email", SwingConstants.CENTER);
         usernameLabel = new JLabel("Username", SwingConstants.CENTER);
         nameLabel = new JLabel("Name", SwingConstants.CENTER);
         surnameLabel = new JLabel("Surname", SwingConstants.CENTER);
@@ -33,7 +34,6 @@ public class Signup extends BasePanel implements ActionListener{
         userTypeLabel = new JLabel("User Type", SwingConstants.CENTER);
         helpMessage = new JLabel("", SwingConstants.CENTER);
 
-        emailField = new JTextField();
         usernameField = new JTextField();
         nameField = new JTextField();
         surnameField = new JTextField();
@@ -41,7 +41,6 @@ public class Signup extends BasePanel implements ActionListener{
         userTypeField = new JComboBox<>(userOptions);
         userTypeField.setBounds(80, 50, 140, 20);
 
-        fields.add(emailField);
         fields.add(usernameField);
         fields.add(nameField);
         fields.add(surnameField);
@@ -61,8 +60,6 @@ public class Signup extends BasePanel implements ActionListener{
         this.getMainPanel().setLayout(new GridLayout(21, 1));
 
         this.getMainPanel().add(title);
-        this.getMainPanel().add(emailLabel);
-        this.getMainPanel().add(emailField);
         this.getMainPanel().add(usernameLabel);
         this.getMainPanel().add(usernameField);
         this.getMainPanel().add(nameLabel);
@@ -79,6 +76,8 @@ public class Signup extends BasePanel implements ActionListener{
             this.getMainPanel().add(new JLabel(""));
         }
 
+
+
     }
 
     @Override
@@ -94,9 +93,23 @@ public class Signup extends BasePanel implements ActionListener{
         if(!error) {
             helpMessage.setText("");
             Database db = new Database();
-//            Student student = new Student(db, emailField.getText(), usernameField.getText(), passwordField.getText(), "", "", -1, -1);
-            Student student = new Student(db, usernameField.getText(), nameField.getText(), surnameField.getText(), passwordField.getText(), "level", "lang", -1, -1);
-            student.insert();
+
+//          Implemented alternate db handling of user storage - Kenton Duprey
+            if (userTypeField.getSelectedItem().toString().equals("Teacher")) {
+                ArrayList<HashMap<Integer, String>> languages = db.query("SELECT *" +
+                        "      FROM Language\n" +
+                        "      WHERE languageName='Spanish'\n" +
+                        "      LIMIT 501");
+                Teacher teacher = new Teacher(db, usernameField.getText(), String.valueOf(passwordField.getPassword()), Integer.parseInt(languages.get(0).get("languageID")));
+                teacher.insert();
+            } else {
+                ArrayList<HashMap<Integer, String>> languages = db.query("SELECT *" +
+                        "      FROM Language\n" +
+                        "      WHERE languageName='Spanish'\n" +
+                        "      LIMIT 501");
+                Student student = new Student(db, usernameField.getText(), nameField.getText(), surnameField.getText(), String.valueOf(passwordField.getPassword()), "level", "Spanish", -1, Integer.parseInt(languages.get(0).get("languageID")));
+                student.insert();
+            }
             for(JTextComponent component: fields){
                 component.setText("");
             }

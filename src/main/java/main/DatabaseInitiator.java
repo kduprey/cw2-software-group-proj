@@ -1,6 +1,6 @@
 package main;
 
-import main.dataclasses.Dialogue;
+import main.dataclasses.Admin;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class DatabaseInitiator {
                 for(int i = 0; i<values.size(); i++){
                     values.set(i, values.get(i).replace("<c>", ",").replace("'", "''"));
                 }
-                Dialogue dialogue = new Dialogue(db, values.get(1), values.get(2), values.get(4), values.get(3), values.get(0), 1);
+                Admin.Dialogue dialogue = new Admin.Dialogue(db, values.get(1), values.get(2), values.get(4), values.get(3), values.get(0), 1);
                 dialogue.insert();
 
             }

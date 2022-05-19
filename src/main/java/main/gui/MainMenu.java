@@ -14,7 +14,7 @@ public class MainMenu extends BasePanel{
 
         selectLanguage = new JButton("Select the teacher student and language");
         selectTopic = new JButton("Select topic level conversation for student and teacher");
-        administratorUserData = new JButton("Administer users’ data with appropriate analytics \n");
+        administratorUserData = new JButton("Administer users’ data with appropriate analytics");
         performanceOfStudent = new JButton("Monitor the performance of the student with appropriate analytics\n");
         studentTeacherSessions = new JButton("Monitor how often a teacher-student pair has engaged with a task with appropriate analytics");
         monitorTopicConversation = new JButton("Monitor how often different topics/conversations at various levels are invoked with appropriate analytics");
@@ -50,6 +50,11 @@ class MenuButtonsListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        screenSwitch.show(name);
+        if (name.equals("administratorUserData") && screenSwitch.getUserType().equals("Student")) {
+            JOptionPane.showMessageDialog(null, "Students are not allowed to view this data.", "Not Allowed", JOptionPane.ERROR_MESSAGE);
+        } else {
+            screenSwitch.show(name);
+        }
+
     }
 }

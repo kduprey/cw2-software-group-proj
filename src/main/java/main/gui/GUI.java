@@ -32,14 +32,14 @@ public class GUI extends JFrame {
         Login login = new Login(screenSwitch);
         MainMenu menu = new MainMenu(screenSwitch);
         StudentTeacherSessions studentTeacherSessions = new StudentTeacherSessions(screenSwitch);
-        //YourPanel yourPanel = new YourPanel();
+        AdministratorUserData admin = new AdministratorUserData(screenSwitch);
 
         screenSwitch.add(signup, "signup");
         screenSwitch.add(login, "login");
         screenSwitch.add(main, "main");
         screenSwitch.add(menu, "menu");
         screenSwitch.add(studentTeacherSessions, "studentTeacherSessions");
-        //screenSwitch.add(yourPanel, "selectTopic");
+        screenSwitch.add(admin, "administratorUserData");
 
         screenSwitch.show("main");
 

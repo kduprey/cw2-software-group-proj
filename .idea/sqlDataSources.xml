@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="ef7add86-33d0-4923-94db-6324ecb1d3c3" name="softTechDB Mapping">
+      <data-sources db="46c287d5-83cb-492b-87e9-fb62533114c4" ddl="9388d0d5-db0a-4321-89cd-e65117849204" />
+      <scope>
+        <node kind="database" qname="@">
+          <node kind="schema" qname="@" />
+        </node>
+      </scope>
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="9388d0d5-db0a-4321-89cd-e65117849204" />
+          <option name="name" value="softTechDB (DDL)" />
+          <option name="languageId" value="SQLite" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/softTechDB.db" />
+            </array>
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>

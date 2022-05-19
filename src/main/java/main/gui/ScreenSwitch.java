@@ -19,6 +19,16 @@ public class ScreenSwitch extends JPanel {
 
     private String userId = null;
 
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    private String userType = null;
+
     public ScreenSwitch(){
         CardLayout cards = new CardLayout();
         this.layout = cards;
